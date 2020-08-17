@@ -7,7 +7,9 @@ function LoginForm() {
   const [ email, setEmail ] = useState('')
   const [ password, setPassword ] = useState('')
   
+  const [ isProcessedEmail, setProcessedEmail ] = useState(false)
   const [ isValidEmail, setValidEmail ] = useState(true)
+  const [ isProcessing, setProcessing ] = useState(false)
   const [ isDisabled, setDisabled ] = useState(true)
   const [ error, setError] = useState('')
 
@@ -25,8 +27,13 @@ function LoginForm() {
   }
 
   const onBlur = async (e) => {
+    if (isProcessedEmail) {
+      return false
+    }
     setDisabled(true);
+
     if (checkEmail(email)) {
+      setProcessing(true)
       try {
         await validateEmail(email);
         setValidEmail(true)
@@ -37,17 +44,20 @@ function LoginForm() {
         setDisabled(true)
         setValidEmail(false)
       }
+      setProcessedEmail(true)
     } else {
       setError('Email format is invalid');
       setDisabled(true)
       setValidEmail(false)
     }
+    setProcessing(false)
   }
 
 
   return (
     <>
-      <div className="mx-auto sm:w-2/3 md:w-1/2 w-full max-w-lg py-12">
+      <h1>{`${isProcessedEmail}  ${email}` }</h1>
+      <div className="mx-auto sm:w-2/3 md:w-1/2 w-full max-w-lg py-12 px-4">
         <form className="w-full max-w-lg" onSubmit={onSubmit}>
           <div className="flex flex-wrap -mx-3 mb-3">
             <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -82,7 +92,7 @@ function LoginForm() {
             </div>
           </div>
           
-          <div className="flex flex-wrap -mx-3 mb-3">
+          <div className="flex flex-wrap -mx-3">
             <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
               <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-email">
                 Email
@@ -95,8 +105,9 @@ function LoginForm() {
                 placeholder="email@email.com" 
                 value={email}
                 onChange={e => {
-                  if (e.currentTarget.value !== email) setEmail(e.currentTarget.value)
-                  }}
+                  setEmail(e.currentTarget.value)
+                    setProcessedEmail(false)
+                }}
                 onBlur={onBlur}
                 onFocus={onFocus}
                 />
@@ -120,6 +131,7 @@ function LoginForm() {
           </div>
           <div className="flex flex-wrap -mx-3 mb-3">
             <div className="w-full px-3 text-center">
+              <p className="text-blue-500 text-sm italic mb-2">{isProcessing ? 'Processing...' : ''} &nbsp;</p>
               <button className={ `rounded px-6 py-2 border ${isDisabled ? 'text-red-700' : 'text-blue-700'} bg-blue-200 hover:bg-blue-300 font-bold disabled:bg-gray-200`} type="submit" disabled={isDisabled}>
                 Login
               </button>
