@@ -1,5 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+[Tailwind CSS](https://tailwindcss.com/docs/installation) added as well 
+
 ## Available Scripts
 
 In the project directory, you can run:

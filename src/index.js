@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+// import './index.css';
+import './assets/main.css';
+// eslint-disable-next-line
 import App from './App';
+import LoginForm from './LoginForm'
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <LoginForm />
   </React.StrictMode>,
   document.getElementById('root')
 );
