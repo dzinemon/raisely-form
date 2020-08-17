@@ -23,7 +23,7 @@ function LoginForm() {
   }
 
   const onFocus = async (e) => {
-    setError('')
+    if (isProcessedEmail && isValidEmail) setError('')      
   }
 
   const onBlur = async (e) => {
