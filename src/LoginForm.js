@@ -59,7 +59,7 @@ function LoginForm() {
       <div className="mx-auto sm:w-2/3 md:w-1/2 w-full max-w-lg py-12 px-4">
         <form className="w-full max-w-lg" onSubmit={onSubmit}>
           <div className="flex flex-wrap -mx-3 mb-3">
-            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <div className="w-full md:w-1/2 px-3 mb-3 md:mb-0">
               <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-first-name">
                 First Name
               </label>
@@ -92,7 +92,7 @@ function LoginForm() {
           </div>
           
           <div className="flex flex-wrap -mx-3">
-            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <div className="w-full md:w-1/2 px-3 mb-3 md:mb-0">
               <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-email">
                 Email
               </label>
@@ -131,7 +131,7 @@ function LoginForm() {
           <div className="flex flex-wrap -mx-3 mb-3">
             <div className="w-full px-3 text-center">
               <p className="text-blue-500 text-sm italic mb-2">{isProcessing ? 'Processing...' : ''} &nbsp;</p>
-              <button className={ `rounded px-6 py-2 border ${isDisabled ? 'text-red-700' : 'text-blue-700'} bg-blue-200 hover:bg-blue-300 font-bold disabled:bg-gray-200`} type="submit" disabled={isDisabled}>
+              <button className={ `rounded px-8 py-2 border ${isDisabled ? 'text-red-700' : 'text-blue-700'} bg-blue-100 hover:bg-blue-300 font-bold disabled:bg-red-200`} type="submit" disabled={isDisabled}>
                 Login
               </button>
             </div>
