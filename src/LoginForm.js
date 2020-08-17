@@ -56,7 +56,6 @@ function LoginForm() {
 
   return (
     <>
-      <h1>{`${isProcessedEmail}  ${email}` }</h1>
       <div className="mx-auto sm:w-2/3 md:w-1/2 w-full max-w-lg py-12 px-4">
         <form className="w-full max-w-lg" onSubmit={onSubmit}>
           <div className="flex flex-wrap -mx-3 mb-3">
